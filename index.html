@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 40px 16px;
+    color: #222;
+  }
+  .page-header {
+    max-width: 520px;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .page-header p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+  }
+  .form-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 32px 36px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+  p.subtitle {
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  h2.section-heading {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #4a7fdc;
+    margin: 28px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  h2.section-heading:first-of-type {
+    margin-top: 0;
+  }
+  .field {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4a7fdc;
+    box-shadow: 0 0 0 2px rgba(74,127,220,0.2);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .radio-group label, .checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    font-size: 14px;
+    gap: 6px;
+    margin-bottom: 0;
+  }
+  .error-message {
+    color: #d93025;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+  }
+  .field.invalid input,
+  .field.invalid select,
+  .field.invalid textarea {
+    border-color: #d93025;
+  }
+  .field.invalid .error-message {
+    display: block;
+  }
+  .required {
+    color: #d93025;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #4a7fdc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  button:hover {
+    background: #3a68bd;
+  }
+  .success-message {
+    display: none;
+    background: #e6f4ea;
+    color: #1e7e34;
+    border: 1px solid #b7e1c1;
+    padding: 12px 16px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  .char-count {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Contact us</h1>
+  <p>Fill out the form below and we'll get back to you within 2 business days.</p>
+</div>
+
+<div class="form-wrapper">
+
+  <div class="success-message" id="successMessage">
+    Thank you! Your message has been submitted successfully.
+  </div>
+
+  <form id="contactForm" novalidate>
+
+    <h2 class="section-heading">Your details</h2>
+
+    <!-- Text field: Name -->
+    <div class="field" id="nameField">
+      <label for="name">Full name <span class="required">*</span></label>
+      <input type="text" id="name" name="name" placeholder="Jane Doe">
+      <div class="error-message">Please enter your full name (at least 2 characters).</div>
+    </div>
+
+    <!-- Text field: Email -->
+    <div class="field" id="emailField">
+      <label for="email">Email address <span class="required">*</span></label>
+      <input type="email" id="email" name="email" placeholder="jane@example.com">
+      <div class="error-message">Please enter a valid email address.</div>
+    </div>
+
+    <!-- Text field: Phone (optional) -->
+    <div class="field" id="phoneField">
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+      <div class="error-message">Please enter a valid phone number.</div>
+    </div>
+
+    <h2 class="section-heading">Your message</h2>
+
+    <!-- Dropdown: Subject -->
+    <div class="field" id="subjectField">
+      <label for="subject">Subject <span class="required">*</span></label>
+      <select id="subject" name="subject">
+        <option value="">-- Select a subject --</option>
+        <option value="general">General inquiry</option>
+        <option value="support">Technical support</option>
+        <option value="billing">Billing question</option>
+        <option value="feedback">Feedback</option>
+        <option value="other">Other</option>
+      </select>
+      <div class="error-message">Please select a subject.</div>
+    </div>
+
+    <!-- Radio buttons: Preferred contact method -->
+    <div class="field" id="contactMethodField">
+      <label>Preferred contact method <span class="required">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="contactMethod" value="email"> Email</label>
+        <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
+        <label><input type="radio" name="contactMethod" value="either"> Either</label>
+      </div>
+      <div class="error-message">Please choose a preferred contact method.</div>
+    </div>
+
+    <!-- Textarea: Message -->
+    <div class="field" id="messageField">
+      <label for="message">Message <span class="required">*</span></label>
+      <textarea id="message" name="message" maxlength="500" placeholder="How can we help you?"></textarea>
+      <div class="char-count"><span id="charCount">0</span>/500 characters</div>
+      <div class="error-message">Please enter a message (at least 10 characters).</div>
+    </div>
+
+    <h2 class="section-heading">Preferences</h2>
+
+    <!-- Checkboxes: Interests -->
+    <div class="field">
+      <label>I'm interested in (optional)</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="interests" value="newsletter"> Newsletter</label>
+        <label><input type="checkbox" name="interests" value="updates"> Product updates</label>
+        <label><input type="checkbox" name="interests" value="events"> Events</label>
+      </div>
+    </div>
+
+    <!-- Checkbox: Terms agreement -->
+    <div class="field" id="termsField">
+      <label style="display:flex; align-items:center; gap:6px; font-weight:normal;">
+        <input type="checkbox" id="terms" name="terms">
+        I agree to the terms and privacy policy <span class="required">*</span>
+      </label>
+      <div class="error-message">You must agree to the terms before submitting.</div>
+    </div>
+
+    <button type="submit">Send message</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const successMessage = document.getElementById('successMessage');
+  const messageBox = document.getElementById('message');
+  const charCount = document.getElementById('charCount');
+
+  // Live character counter for the textarea
+  messageBox.addEventListener('input', () => {
+    charCount.textContent = messageBox.value.length;
+  });
+
+  // Helper to toggle error state on a field
+  function setFieldValid(fieldEl, isValid) {
+    if (isValid) {
+      fieldEl.classList.remove('invalid');
+    } else {
+      fieldEl.classList.add('invalid');
+    }
+  }
+
+  function validateName() {
+    const val = document.getElementById('name').value.trim();
+    const isValid = val.length >= 2;
+    setFieldValid(document.getElementById('nameField'), isValid);
+    return isValid;
+  }
+
+  function validateEmail() {
+    const val = document.getElementById('email').value.trim();
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = pattern.test(val);
+    setFieldValid(document.getElementById('emailField'), isValid);
+    return isValid;
+  }
+
+  function validatePhone() {
+    const val = document.getElementById('phone').value.trim();
+    // Optional field: empty is valid; otherwise must look like a phone number
+    const pattern = /^[\d\s()+-]{7,20}$/;
+    const isValid = val === '' || pattern.test(val);
+    setFieldValid(document.getElementById('phoneField'), isValid);
+    return isValid;
+  }
+
+  function validateSubject() {
+    const val = document.getElementById('subject').value;
+    const isValid = val !== '';
+    setFieldValid(document.getElementById('subjectField'), isValid);
+    return isValid;
+  }
+
+  function validateContactMethod() {
+    const checked = document.querySelector('input[name="contactMethod"]:checked');
+    const isValid = checked !== null;
+    setFieldValid(document.getElementById('contactMethodField'), isValid);
+    return isValid;
+  }
+
+  function validateMessage() {
+    const val = messageBox.value.trim();
+    const isValid = val.length >= 10;
+    setFieldValid(document.getElementById('messageField'), isValid);
+    return isValid;
+  }
+
+  function validateTerms() {
+    const isChecked = document.getElementById('terms').checked;
+    setFieldValid(document.getElementById('termsField'), isChecked);
+    return isChecked;
+  }
+
+  // Validate a field as soon as the user leaves it (better UX than only on submit)
+  document.getElementById('name').addEventListener('blur', validateName);
+  document.getElementById('email').addEventListener('blur', validateEmail);
+  document.getElementById('phone').addEventListener('blur', validatePhone);
+  document.getElementById('subject').addEventListener('change', validateSubject);
+  document.getElementById('terms').addEventListener('change', validateTerms);
+  document.querySelectorAll('input[name="contactMethod"]').forEach(radio => {
+    radio.addEventListener('change', validateContactMethod);
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    successMessage.style.display = 'none';
+
+    const validations = [
+      validateName(),
+      validateEmail(),
+      validatePhone(),
+      validateSubject(),
+      validateContactMethod(),
+      validateMessage(),
+      validateTerms()
+    ];
+
+    const allValid = validations.every(v => v === true);
+
+    if (allValid) {
+      successMessage.style.display = 'block';
+      form.reset();
+      charCount.textContent = '0';
+      document.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
+      successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      // Scroll to the first invalid field
+      const firstInvalid = document.querySelector('.field.invalid');
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
