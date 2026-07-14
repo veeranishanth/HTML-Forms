@@ -50,7 +50,7 @@ git clone https://github.com/palrushideepthisree/contact-form.git
   
 ## 📸 Screenshots
 
-![Contact Form](contact-form.png)
+![Contact Form](screenshots/contact-form.png)
 
 ##  Author
 
