@@ -4,7 +4,7 @@ A simple **Contact Form** built using **HTML5**. This project demonstrates the u
 
 ## 🔗 Links
 
- **GitHub Repository:** https://github.com/veeranishanth/contact-form
+ **GitHub Repository:** https://github.com/veeranishanth/HTML-Forms
 
  **Live Demo:** https://veeranishanth.github.io/HTML-Forms/
   
